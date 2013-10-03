@@ -1,0 +1,263 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.velti.mmbu</groupId>
+    <artifactId>mongomorfiatest</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>mongomorfiatest Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <developers>
+        <developer>
+            <id>gvlachogiannis</id>
+            <email>gvlachogiannis@velti.com</email>
+        </developer>
+    </developers>
+
+
+    <properties>
+        <java.version>1.6</java.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
+
+        <commons-logging.version>1.0.4</commons-logging.version>
+        <slf4j.version>1.7.2</slf4j.version>
+        <plugin.compiler.version>2.5.1</plugin.compiler.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+        <!--not used-->
+        <log4j.version>1.2.17</log4j.version>
+
+    </properties>
+
+
+    <build>
+
+        <finalName>mongomorfiatest</finalName>
+
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14.1</version>
+                <!--<dependencies>-->
+                <!--<dependency>-->
+                <!--<groupId>org.apache.maven.surefire</groupId>-->
+                <!--<artifactId>surefire-junit47</artifactId>-->
+                <!--<version>2.14.1</version>-->
+                <!--</dependency>-->
+                <!--</dependencies>-->
+
+                <configuration>
+
+                    <trimStackTrace>false</trimStackTrace>
+
+                    <argLine>-Xms512m -Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <skipTests>false</skipTests>
+                    <includes>
+                        <include>**/Test*.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*TestCase.java</include>
+                        <include>**/*IT.java</include>
+                    </includes>
+
+
+                    <!--<groups>com.velti.lsc.categories.SlowTests</groups>-->
+                    <!--<groups>com.velti.lsc.categories.TimeRelatedFlankyTests</groups>-->
+                    <!--<groups>com.velti.lsc.categories.PerformanceTests</groups>-->
+                    <!--<groups>com.velti.lsc.categories.IntegrationTests</groups>-->
+                    <!--<groups>com.velti.lsc.categories.ConcurrencyTests</groups>-->
+                    <!--<groups>com.velti.lsc.categories.DAOTests</groups>-->
+                    <!--<excludes>-->
+                    <!--<groups>com.velti.lsc.categories.SlowTests</groups>-->
+                    <!--</excludes>-->
+
+
+                </configuration>
+
+                <!--
+                   <configuration>
+                       <excludes>
+                           <exclude>**/*WebTest.java</exclude>
+                           <exclude>**/*TestTextUtil.java</exclude>
+                           <exclude>**/*TestActivityUtil.java</exclude>
+                           <exclude>**/*TestBaseBulkUtil.java</exclude>
+                           <exclude>**/*TestBulkUtil.java</exclude>
+                           <exclude>**/*TestSegmentUtil.java</exclude>
+                           <exclude>**/*TestQuestionsWrapper.java</exclude>
+                           <exclude>**/*TestDashboardDataUtil.java</exclude>
+                           <exclude>**/*TestCampaignUtil.java</exclude>
+                       </excludes>
+                   </configuration>
+                    -->
+            </plugin>
+
+
+        </plugins>
+
+    </build>
+
+
+    <!-- Project dependencies -->
+    <dependencies>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+
+        <!-- General dependencies for standard applications -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+
+
+        <!--<dependency>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>${log4j.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--mongo db dependencies-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+            <version>0.105</version>
+        </dependency>
+
+
+        <!-- apache dependencies-->
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>net._01001111</groupId>
+            <artifactId>jlorem</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>

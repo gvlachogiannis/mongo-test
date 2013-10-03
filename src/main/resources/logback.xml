@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+
+    <appender name="SYSOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{ISO8601} [%t] %-5p %lo{40} - %m%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${catalina.home}/webapps/mongomorrf/logs/mongomorf.log</File>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${catalina.home}/webapps/mongomorrf/archive/mongomorf.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+        </triggeringPolicy>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>./log/mongomorf.log.%i.gz</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>12</MaxIndex>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{ISO8601} [%t] %-5p %-40lo{40}%L - %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.velti.mmbu">
+        <level value="debug"/>
+    </logger>
+
+
+    <logger name="org.hibernate">
+        <level value="error"/>
+    </logger>
+
+    <logger name="net.sf.ehcache">
+        <level value="error"/>
+    </logger>
+
+    <logger name="org.apache">
+        <level value="error"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="debug"/>
+    </logger>
+
+    <!--
+        <logger name="org.hibernate.SQL">
+           <level value="debug" />
+         </logger>
+            -->
+
+    <!--         <logger name="org.hibernate.hql.AST"> -->
+    <!--             <level value="debug" /> -->
+    <!--         </logger> -->
+
+
+    <!--         <logger name="org.hibernate.type"> -->
+    <!--                 <level value="trace" /> -->
+    <!--         </logger>	 -->
+
+    <root>
+        <level value="info"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+
+
+</configuration>
