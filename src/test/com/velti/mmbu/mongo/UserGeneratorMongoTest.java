@@ -12,6 +12,7 @@ import net._01001111.text.LoremIpsum;
 import org.apache.commons.math.random.RandomData;
 import org.apache.commons.math.random.RandomDataImpl;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mongodb.morphia.AdvancedDatastore;
@@ -35,6 +36,7 @@ import java.util.Random;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/appllicationContext.xml")
+@Ignore("Too heavy")
 public class UserGeneratorMongoTest {
 
 //    private static Logger logger = Logger.getLogger(UserGeneratorMongoTest.class); // Logger.
@@ -194,7 +196,7 @@ public class UserGeneratorMongoTest {
             for (int j = 0; j < listN; j++) {
                 listMap.put((long) randomData.nextInt(10000, 10100), getRandomOptState().name());
             }
-            user.setLists(listMap);
+//            user.setLists(listMap);
             int propertyN = randomData.nextInt(0, 2);
             Map<String, String> propertyMap = new HashMap<String, String>();
             for (int p = 0; p < propertyN; p++) {

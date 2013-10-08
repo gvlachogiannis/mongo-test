@@ -33,7 +33,7 @@ public class UserContext {
     private Map<String, String> userProperties;
 
     @Indexed
-    private Map<Long, String> lists;
+    private Map<String, UserOptState> lists;
 
     private Date createdDate;
 
@@ -93,11 +93,11 @@ public class UserContext {
         this.userProperties = userProperties;
     }
 
-    public Map<Long, String> getLists() {
+    public Map<String, UserOptState> getLists() {
         return lists;
     }
 
-    public void setLists(Map<Long, String> lists) {
+    public void setLists(Map<String, UserOptState> lists) {
         this.lists = lists;
     }
 

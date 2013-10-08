@@ -9,9 +9,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${catalina.home}/webapps/mongomorrf/logs/mongomorf.log</File>
+        <File>${jboss.server.log.dir}/mongomorf.log</File>
         <triggeringPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${catalina.home}/webapps/mongomorrf/archive/mongomorf.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+            <FileNamePattern>${jboss.server.log.dir}/archive/mongomorf.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
         </triggeringPolicy>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <FileNamePattern>./log/mongomorf.log.%i.gz</FileNamePattern>

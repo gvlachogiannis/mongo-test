@@ -1,4 +1,4 @@
-package com.velti.mmbu.mongo;
+package com.velti.mmbu.mongo.Morfia;
 
 import com.velti.mmbu.mongo.categories.PerformanceTests;
 import com.velti.mmbu.mongo.domain.MyEntity;

@@ -3,24 +3,21 @@ package com.velti.mmbu.mongo.domain;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.mapping.Mapper;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 
 /** @author gvlachogiannis */
-@Entity(value = "myEntities", noClassnameStored = true)
-public class MyEntity {
-
+@Entity(value = "usersTest", noClassnameStored = true)
+public class User {
     @Id
     private ObjectId id;
-
     private String name;
-
-    private int counter;
+    private long lastLogin;
+    //... other members
 
     public ObjectId getId() {
         return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -31,11 +28,11 @@ public class MyEntity {
         this.name = name;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
+    public long getLastLogin() {
+        return lastLogin;
     }
 
-    public int getCounter() {
-        return counter;
+    public void setLastLogin(long lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }
